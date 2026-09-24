@@ -1,0 +1,1364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PHY122 Study Guide — Vibrations, Waves, Sound & Optics</title>
+<style>
+  :root{
+    --bg:#0f172a;
+    --panel:#ffffff;
+    --ink:#1e293b;
+    --muted:#64748b;
+    --accent:#4f46e5;
+    --accent2:#0891b2;
+    --good:#059669;
+    --bad:#dc2626;
+    --line:#e2e8f0;
+    --paper:#f8fafc;
+    --sidebar-bg:#111827;
+    --sidebar-ink:#cbd5e1;
+    --sidebar-active:#312e81;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family: 'Georgia', 'Cambria', serif;
+    background: var(--paper);
+    color: var(--ink);
+    display:flex;
+    min-height:100vh;
+  }
+  /* Sidebar */
+  #sidebar{
+    width:270px;
+    flex-shrink:0;
+    background: var(--sidebar-bg);
+    color: var(--sidebar-ink);
+    padding:22px 14px;
+    position:sticky;
+    top:0;
+    height:100vh;
+    overflow-y:auto;
+  }
+  #sidebar h1{
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size:15px;
+    color:#fff;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+    margin:4px 6px 2px;
+  }
+  #sidebar .sub{
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size:11.5px;
+    color:#8b93a7;
+    margin:0 6px 18px;
+  }
+  .navgroup-label{
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size:10.5px;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    color:#6b7280;
+    margin:16px 10px 6px;
+  }
+  .navitem{
+    display:flex;
+    gap:10px;
+    align-items:center;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size:13.5px;
+    padding:9px 10px;
+    border-radius:8px;
+    cursor:pointer;
+    color:var(--sidebar-ink);
+    transition:background .15s ease;
+    line-height:1.3;
+  }
+  .navitem .num{
+    flex-shrink:0;
+    width:22px;height:22px;
+    border-radius:6px;
+    background:#1f2937;
+    display:flex;align-items:center;justify-content:center;
+    font-size:11px;
+    color:#93c5fd;
+  }
+  .navitem:hover{background:#1f2937;}
+  .navitem.active{background:var(--sidebar-active); color:#fff;}
+  .navitem.active .num{background:#4338ca; color:#fff;}
+  .navitem.cbt{margin-top:6px;}
+  .navitem.cbt .num{background:#7c2d12; color:#fed7aa;}
+  .navitem.cbt.active .num{background:#c2410c;}
+
+  /* Main content */
+  #main{
+    flex:1;
+    padding: 40px 56px 90px;
+    max-width:920px;
+  }
+  .panel{ display:none; }
+  .panel.active{ display:block; animation: fade .25s ease; }
+  @keyframes fade{ from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);} }
+
+  .topic-kicker{
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    color:var(--accent2);
+    font-weight:700;
+    margin-bottom:6px;
+  }
+  h2.topic-title{
+    font-size:30px;
+    margin:0 0 22px;
+    color:#111827;
+    border-bottom:3px solid var(--accent);
+    padding-bottom:14px;
+  }
+  h3{
+    font-size:19px;
+    color:var(--accent);
+    margin:30px 0 10px;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+  }
+  h4{
+    font-size:15.5px;
+    color:#334155;
+    margin:20px 0 8px;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+  }
+  p{ line-height:1.65; font-size:15.5px; }
+  ul,ol{ line-height:1.65; font-size:15.5px; padding-left:22px;}
+  li{margin-bottom:4px;}
+
+  .formula-box{
+    background:#eef2ff;
+    border-left:4px solid var(--accent);
+    padding:14px 18px;
+    margin:14px 0;
+    border-radius:0 8px 8px 0;
+    font-size:16.5px;
+    overflow-x:auto;
+  }
+  .formula-box .label{
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    color:var(--accent);
+    display:block;
+    margin-bottom:6px;
+    font-weight:700;
+  }
+  .note{
+    background:#fffbeb;
+    border:1px solid #fde68a;
+    padding:12px 16px;
+    border-radius:8px;
+    font-size:14.5px;
+    margin:14px 0;
+  }
+  .note .label{ font-weight:700; color:#92400e; font-family:'Helvetica Neue',Arial,sans-serif; font-size:11.5px; text-transform:uppercase;}
+  .example{
+    background:#f0fdfa;
+    border:1px solid #99f6e4;
+    padding:14px 18px;
+    border-radius:8px;
+    margin:16px 0;
+    font-size:14.8px;
+  }
+  .example .label{
+    font-weight:700; color:#0f766e;
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    font-size:12px; text-transform:uppercase; letter-spacing:.04em;
+    margin-bottom:6px; display:block;
+  }
+  table{
+    border-collapse:collapse;
+    width:100%;
+    margin:14px 0;
+    font-size:14.5px;
+  }
+  th,td{
+    border:1px solid var(--line);
+    padding:8px 12px;
+    text-align:left;
+  }
+  th{ background:#f1f5f9; font-family:'Helvetica Neue',Arial,sans-serif; font-size:12.5px; text-transform:uppercase; letter-spacing:.03em; color:#475569;}
+  .case-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin:14px 0;
+  }
+  .case-card{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:12px 14px;
+  }
+  .case-card .ct{
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    font-weight:700;
+    color:var(--accent2);
+    font-size:12.5px;
+    text-transform:uppercase;
+    margin-bottom:6px;
+  }
+  .diagram{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:16px;
+    margin:16px 0;
+    text-align:center;
+  }
+  .diagram svg{ max-width:100%; height:auto; }
+  .diagram .cap{ font-family:'Helvetica Neue',Arial,sans-serif; font-size:12px; color:var(--muted); margin-top:8px;}
+  .keyfacts{
+    background:#111827;
+    color:#e5e7eb;
+    border-radius:10px;
+    padding:16px 20px;
+    margin:22px 0;
+    font-size:14.3px;
+    font-family:'Helvetica Neue',Arial,sans-serif;
+  }
+  .keyfacts .label{ color:#93c5fd; font-weight:700; text-transform:uppercase; font-size:11px; letter-spacing:.06em; display:block; margin-bottom:8px;}
+  .keyfacts ul{margin:0; padding-left:18px;}
+  .keyfacts li{margin-bottom:5px; line-height:1.5;}
+
+  .pill-row{ display:flex; gap:8px; flex-wrap:wrap; margin:14px 0;}
+  .pill{
+    background:#e0e7ff; color:#3730a3;
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    font-size:12px; padding:4px 10px; border-radius:999px;
+  }
+
+  /* Footer nav buttons */
+  .panelnav{
+    display:flex; justify-content:space-between;
+    margin-top:44px; padding-top:20px; border-top:1px solid var(--line);
+    font-family:'Helvetica Neue',Arial,sans-serif; font-size:13.5px;
+  }
+  .panelnav button{
+    background:#fff; border:1px solid var(--line); color:#334155;
+    padding:9px 16px; border-radius:8px; cursor:pointer; font-size:13.5px;
+  }
+  .panelnav button:hover{ border-color:var(--accent); color:var(--accent);}
+
+  /* ===== CBT SECTION ===== */
+  #cbt-intro{
+    background:#fff; border:1px solid var(--line); border-radius:12px;
+    padding:28px 30px; margin-bottom:20px;
+  }
+  #cbt-intro h4{margin-top:0;}
+  .cbt-setup{
+    display:flex; gap:10px; flex-wrap:wrap; margin:18px 0;
+  }
+  .chip{
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    font-size:13px; padding:8px 14px; border-radius:8px;
+    border:1.5px solid var(--line); background:#fff; cursor:pointer; color:#334155;
+  }
+  .chip.selected{ border-color:var(--accent); background:#eef2ff; color:var(--accent); font-weight:700;}
+  #startBtn{
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    background:var(--accent); color:#fff; border:none;
+    padding:12px 26px; border-radius:8px; font-size:14.5px; cursor:pointer;
+    font-weight:600;
+  }
+  #startBtn:hover{ background:#4338ca; }
+
+  #quizArea{ display:none; }
+  #quizHeader{
+    display:flex; justify-content:space-between; align-items:center;
+    font-family:'Helvetica Neue',Arial,sans-serif; font-size:13px; color:var(--muted);
+    margin-bottom:10px;
+  }
+  #progressBarOuter{
+    height:8px; background:#e2e8f0; border-radius:99px; overflow:hidden; margin-bottom:26px;
+  }
+  #progressBarInner{ height:100%; background:var(--accent); width:0%; transition:width .3s ease;}
+  .qcard{
+    background:#fff; border:1px solid var(--line); border-radius:12px;
+    padding:26px 28px; margin-bottom:16px;
+  }
+  .qtag{
+    font-family:'Helvetica Neue',Arial,sans-serif; font-size:11px; text-transform:uppercase;
+    letter-spacing:.05em; color:var(--accent2); font-weight:700; margin-bottom:8px;
+  }
+  .qtext{ font-size:17px; margin-bottom:18px; line-height:1.5; }
+  .opt{
+    display:flex; align-items:center; gap:12px;
+    padding:12px 14px; border:1.5px solid var(--line); border-radius:9px;
+    margin-bottom:10px; cursor:pointer; font-size:14.8px;
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    transition: all .12s ease;
+  }
+  .opt:hover{ border-color:#a5b4fc; background:#f5f5ff; }
+  .opt .letter{
+    width:26px; height:26px; border-radius:50%; background:#f1f5f9; color:#475569;
+    display:flex; align-items:center; justify-content:center; font-size:12.5px; font-weight:700; flex-shrink:0;
+  }
+  .opt.correct{ border-color:var(--good); background:#ecfdf5; }
+  .opt.correct .letter{ background:var(--good); color:#fff; }
+  .opt.incorrect{ border-color:var(--bad); background:#fef2f2; }
+  .opt.incorrect .letter{ background:var(--bad); color:#fff; }
+  .opt.disabled{ cursor:default; }
+  .explain{
+    margin-top:14px; padding:12px 16px; background:#f8fafc; border-left:3px solid var(--accent2);
+    border-radius:0 8px 8px 0; font-size:14px; display:none; line-height:1.55;
+  }
+  .explain .label{ font-weight:700; color:var(--accent2); margin-right:5px;}
+  .qfooter{
+    display:flex; justify-content:flex-end; margin-top:6px;
+  }
+  #nextBtn{
+    font-family:'Helvetica Neue',Arial,sans-serif; background:var(--accent); color:#fff; border:none;
+    padding:10px 22px; border-radius:8px; cursor:pointer; font-size:14px; font-weight:600; display:none;
+  }
+  #nextBtn:hover{background:#4338ca;}
+
+  #resultArea{ display:none; text-align:center; padding:40px 20px;}
+  #resultArea .scoreBig{ font-size:56px; font-weight:800; color:var(--accent); font-family:'Helvetica Neue',Arial,sans-serif;}
+  #resultArea .scoreLabel{ font-family:'Helvetica Neue',Arial,sans-serif; color:var(--muted); font-size:14px; margin-bottom:26px;}
+  #resultBreakdown{
+    text-align:left; max-width:520px; margin:0 auto 30px;
+    font-family:'Helvetica Neue',Arial,sans-serif; font-size:13.5px;
+  }
+  .breakdown-row{ display:flex; justify-content:space-between; padding:9px 0; border-bottom:1px solid var(--line);}
+  .breakdown-bar-outer{ flex:1; height:8px; background:#e2e8f0; border-radius:99px; margin:0 12px; overflow:hidden;}
+  .breakdown-bar-inner{ height:100%; background:var(--accent2);}
+  #retakeBtn{
+    font-family:'Helvetica Neue',Arial,sans-serif; background:#fff; border:1.5px solid var(--accent);
+    color:var(--accent); padding:11px 24px; border-radius:8px; cursor:pointer; font-size:14px; font-weight:600;
+  }
+  #retakeBtn:hover{ background:#eef2ff; }
+
+  @media (max-width:820px){
+    body{flex-direction:column;}
+    #sidebar{ position:relative; width:100%; height:auto;}
+    #main{ padding:26px 20px 60px; max-width:none;}
+    .case-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<nav id="sidebar">
+  <h1>PHY122</h1>
+  <div class="sub">Vibrations · Waves · Sound · Optics</div>
+
+  <div class="navgroup-label">Vibrations &amp; Sound</div>
+  <div class="navitem" data-target="t1"><span class="num">1</span> Vibrations &amp; SHM</div>
+  <div class="navitem" data-target="t2"><span class="num">2</span> Waves &amp; Wave Motion</div>
+  <div class="navitem" data-target="t3"><span class="num">3</span> Nature &amp; Propagation of Sound</div>
+  <div class="navitem" data-target="t4"><span class="num">4</span> Sound Sources &amp; Detectors</div>
+
+  <div class="navgroup-label">Geometrical Optics</div>
+  <div class="navitem" data-target="t5"><span class="num">5</span> Reflection</div>
+  <div class="navitem" data-target="t6"><span class="num">6</span> Refraction</div>
+  <div class="navitem" data-target="t7"><span class="num">7</span> Optical Instruments</div>
+  <div class="navitem" data-target="t8"><span class="num">8</span> Prisms &amp; Dispersion</div>
+
+  <div class="navgroup-label">Physical Optics</div>
+  <div class="navitem" data-target="t9"><span class="num">9</span> Wave Nature of Light</div>
+  <div class="navitem" data-target="t10"><span class="num">10</span> Polarization</div>
+
+  <div class="navgroup-label">Assessment</div>
+  <div class="navitem cbt" data-target="cbt"><span class="num">✎</span> CBT Practice Test</div>
+</nav>
+
+<main id="main">
+
+<!-- TOPIC 1 -->
+<section class="panel" id="panel-t1">
+  <div class="topic-kicker">Topic 1</div>
+  <h2 class="topic-title">Vibrations and Simple Harmonic Motion</h2>
+
+  <p>A body executes <strong>Simple Harmonic Motion (SHM)</strong> when its acceleration is always directed towards a fixed point (the equilibrium position) and is directly proportional to its displacement from that point.</p>
+
+  <div class="formula-box">
+    <span class="label">Defining equation of SHM</span>
+    a = −ω²x
+  </div>
+
+  <p>The negative sign shows that the acceleration always opposes the displacement — it is a <em>restoring</em> acceleration pulling the body back to equilibrium.</p>
+
+  <h3>Displacement, Velocity and Acceleration</h3>
+  <p>If a particle starts from equilibrium, its displacement at time t is:</p>
+  <div class="formula-box">x = A sin(ωt) &nbsp;&nbsp; or &nbsp;&nbsp; x = A sin(ωt + φ)</div>
+  <table>
+    <tr><th>Quantity</th><th>Equation</th><th>Maximum value</th></tr>
+    <tr><td>Displacement</td><td>x = A sin(ωt)</td><td>A (amplitude)</td></tr>
+    <tr><td>Velocity</td><td>v = Aω cos(ωt) = ω√(A²−x²)</td><td>Aω (at x = 0)</td></tr>
+    <tr><td>Acceleration</td><td>a = −Aω² sin(ωt) = −ω²x</td><td>Aω² (at x = ±A)</td></tr>
+  </table>
+
+  <h3>Period and Frequency</h3>
+  <div class="formula-box">T = 2π/ω &nbsp;&nbsp;&nbsp; f = 1/T = ω/2π</div>
+
+  <h3>Common SHM Systems</h3>
+  <div class="case-grid">
+    <div class="case-card">
+      <div class="ct">Simple pendulum</div>
+      T = 2π√(l/g) — valid for small angles of swing (θ &lt; ~10°), where l is the string length and g the acceleration due to gravity.
+    </div>
+    <div class="case-card">
+      <div class="ct">Mass on a spring</div>
+      T = 2π√(m/k) — where m is the mass and k the spring (force) constant.
+    </div>
+  </div>
+
+  <h3>Energy in SHM</h3>
+  <div class="formula-box">
+    KE = ½mv² = ½mω²(A²−x²) &nbsp;&nbsp;|&nbsp;&nbsp; PE = ½kx² = ½mω²x² &nbsp;&nbsp;|&nbsp;&nbsp; Total E = ½mω²A² = ½kA²
+  </div>
+  <p>Total mechanical energy in SHM is constant — energy is continuously exchanged between kinetic and potential forms, and is greatest (all KE) at the equilibrium position and least (all PE, KE = 0) at maximum displacement.</p>
+
+  <h3>Damped and Forced Oscillations</h3>
+  <ul>
+    <li><strong>Free oscillation</strong> — a system oscillates at its own natural frequency with no external force and no friction.</li>
+    <li><strong>Damped oscillation</strong> — amplitude decreases with time due to resistive forces (friction, air resistance).</li>
+    <li><strong>Forced oscillation</strong> — a system is driven by an external periodic force at a frequency that may differ from its natural frequency.</li>
+    <li><strong>Resonance</strong> — occurs when the frequency of the external driving force equals the natural (fundamental) frequency of the system, producing a maximum amplitude of vibration.</li>
+  </ul>
+
+  <div class="keyfacts">
+    <span class="label">Key facts to remember</span>
+    <ul>
+      <li>SHM is defined by a = −ω²x — acceleration is proportional to displacement and directed towards equilibrium.</li>
+      <li>Velocity is maximum at the equilibrium position (x=0); acceleration is maximum at the extremes (x=±A).</li>
+      <li>Period of a simple pendulum does not depend on the mass of the bob, only on length l and gravity g.</li>
+      <li>Total energy in undamped SHM is conserved and proportional to A².</li>
+      <li>Resonance occurs when driving frequency = natural frequency, producing maximum amplitude.</li>
+    </ul>
+  </div>
+
+  <div class="panelnav">
+    <button onclick="goTo('t1')" style="visibility:hidden">Prev</button>
+    <button onclick="goTo('t2')">Next: Waves &amp; Wave Motion →</button>
+  </div>
+</section>
+
+<!-- TOPIC 2 -->
+<section class="panel" id="panel-t2">
+  <div class="topic-kicker">Topic 2</div>
+  <h2 class="topic-title">Waves and Wave Motion</h2>
+
+  <p>A wave is a disturbance that transfers energy from one point to another through a medium (or, for electromagnetic waves, through vacuum) without the permanent transfer of matter.</p>
+
+  <h3>Transverse vs Longitudinal Waves</h3>
+  <div class="case-grid">
+    <div class="case-card">
+      <div class="ct">Transverse wave</div>
+      Particle vibration is <em>perpendicular</em> to the direction of wave propagation. Produces crests and troughs. Examples: string waves, water surface waves, light and all electromagnetic waves.
+    </div>
+    <div class="case-card">
+      <div class="ct">Longitudinal wave</div>
+      Particle vibration is <em>parallel</em> to the direction of propagation, producing compressions and rarefactions. Examples: sound waves, seismic P-waves, waves from a tuning fork.
+    </div>
+  </div>
+
+  <table>
+    <tr><th>Wave</th><th>Classification</th></tr>
+    <tr><td>Sound / Speech / Earthquake</td><td>Longitudinal</td></tr>
+    <tr><td>Water (tidal)</td><td>Both — particles move in vertical &amp; horizontal components</td></tr>
+    <tr><td>Light / Heat / Radio &amp; TV / X-rays</td><td>Transverse</td></tr>
+  </table>
+
+  <p>Waves are also classified as <strong>mechanical</strong> (need a material medium — string, water, sound) or <strong>electromagnetic</strong> (can travel through vacuum — light, radio, X-rays).</p>
+
+  <h3>Wave Parameters</h3>
+  <ul>
+    <li><strong>Amplitude (A)</strong> — maximum displacement of a particle from equilibrium.</li>
+    <li><strong>Wavelength (λ)</strong> — distance between two successive points in phase (e.g. crest to crest).</li>
+    <li><strong>Period (T)</strong> — time for one complete oscillation.</li>
+    <li><strong>Frequency (f)</strong> — number of oscillations per second, f = 1/T.</li>
+  </ul>
+
+  <div class="formula-box">
+    <span class="label">Wave equation</span>
+    v = fλ
+  </div>
+
+  <h3>The Progressive Wave Equation</h3>
+  <div class="formula-box">y = A sin(ωt − kx)</div>
+  <p>where ω = 2πf is the angular frequency and k = 2π/λ is the wave number (propagation constant). This equation gives the displacement y of a particle at position x and time t as a plane wave travels in the positive x-direction.</p>
+
+  <h3>General Properties of Waves</h3>
+  <p>All waves — mechanical or electromagnetic — exhibit:</p>
+  <div class="pill-row">
+    <span class="pill">Reflection</span><span class="pill">Refraction</span><span class="pill">Interference</span>
+    <span class="pill">Diffraction</span><span class="pill">Polarization (transverse only)</span>
+  </div>
+
+  <div class="note">
+    <span class="label">Note</span>
+    A wave whose motion is predictable and repeatable is called <em>periodic</em>; an unpredictable one is called <em>non-periodic</em> or <em>noise</em>. Waves may further be classified as <em>audible</em>, <em>ultrasonic</em> (above the range of hearing) or <em>infrasonic</em> (below the range of hearing).
+  </div>
+
+  <div class="keyfacts">
+    <span class="label">Key facts to remember</span>
+    <ul>
+      <li>v = fλ applies to every type of wave.</li>
+      <li>Transverse waves vibrate perpendicular to travel direction; longitudinal waves vibrate parallel to it.</li>
+      <li>Only transverse waves can be polarized.</li>
+      <li>Mechanical waves need a medium; electromagnetic waves do not.</li>
+    </ul>
+  </div>
+
+  <div class="panelnav">
+    <button onclick="goTo('t1')">← Prev: Vibrations &amp; SHM</button>
+    <button onclick="goTo('t3')">Next: Sound →</button>
+  </div>
+</section>
+
+<!-- TOPIC 3 -->
+<section class="panel" id="panel-t3">
+  <div class="topic-kicker">Topic 3</div>
+  <h2 class="topic-title">Nature, Production and Propagation of Sound</h2>
+
+  <p>Sound is a form of energy transmitted through a fluid (gas or liquid) or solid medium as a longitudinal wave, producing a sensation that is detected by the ear. Sound waves are classified into <strong>shock waves</strong> (produced when a medium is strained beyond its elastic limit) and <strong>elastic waves</strong> (produced when the medium retains its elasticity). Sound cannot travel through a vacuum.</p>
+
+  <h3>Characteristics of Sound (Notes of a Musical Sound)</h3>
+  <table>
+    <tr><th>Property</th><th>Depends on</th></tr>
+    <tr><td><strong>Pitch</strong></td><td>Frequency of vibration only — high frequency gives a high-pitched note, low frequency gives a low pitch.</td></tr>
+    <tr><td><strong>Loudness</strong></td><td>Intensity of sound reaching the listener; proportional to the square of the amplitude of vibration and surface area. Unit: the <em>phon</em>.</td></tr>
+    <tr><td><strong>Quality (Timbre)</strong></td><td>Waveform, frequency and intensity — lets us distinguish a note played on a violin from the same note on a flute or piano; depends on the overtones present.</td></tr>
+  </table>
+
+  <h3>Speed of Sound</h3>
+  <div class="formula-box">
+    <span class="label">In a gas</span>
+    c = √(γP/ρ) &nbsp;&nbsp;→&nbsp;&nbsp; (Laplace correction) &nbsp;&nbsp;→&nbsp;&nbsp; c = √(γRT/M)
+  </div>
+  <p>where γ = Cp/Cv is the ratio of molar heat capacities (γ for air ≈ 1.4), P is pressure, ρ is density, R is the gas constant, T the absolute (Kelvin) temperature and M the molar mass. Since γ, R, M are constant for a given gas, <strong>the speed of sound in a gas is independent of pressure at constant temperature</strong>, and is proportional to the square root of the absolute temperature: v ∝ √T.</p>
+
+  <div class="formula-box">
+    <span class="label">On a stretched string (transverse wave)</span>
+    v = √(T/μ) &nbsp; where μ = mass per unit length (linear density)
+  </div>
+
+  <div class="formula-box">
+    <span class="label">Longitudinal wave in a solid</span>
+    c = √(E/ρ) &nbsp; where E is Young's modulus and ρ is density
+  </div>
+
+  <div class="example">
+    <span class="label">Worked example — temperature dependence</span>
+    If the speed of sound in air at 16°C is 338 m/s, find the speed at 0°C.<br>
+    Using v ∝ √T (absolute): v₀/v₁₆ = √(273/289) → v₀ = 338×√(273/289) ≈ <strong>329 m/s</strong>.
+    <br><br>
+    <strong>General rule:</strong> if the absolute (Kelvin) temperature of an ideal gas is doubled, the speed of sound in it also doubles, since v ∝ √T.
+  </div>
+
+  <h3>Standing Waves in Strings and Pipes</h3>
+  <p>For a stretched string of length L fixed at both ends, the fundamental mode has L = λ/2, so:</p>
+  <div class="formula-box">f = v/(2L)</div>
+  <p>The overtones (harmonics) occur at integer multiples of the fundamental: f₁, 2f₁, 3f₁, ...</p>
+  <div class="example">
+    <span class="label">Worked example</span>
+    A violin string vibrates with a fundamental frequency of 420 Hz. First overtone = 2×420 = 840 Hz. Second overtone = 3×420 = 1260 Hz.
+  </div>
+  <p>For a pipe/bottle closed at one end and open at the other (resonating by blowing across the top), the fundamental has L = λ/4:</p>
+  <div class="formula-box">f = v/(4L)</div>
+
+  <h3>Beats</h3>
+  <p>When two notes of nearly equal frequency (f₁ &gt; f₂) sound together, a periodic rise and fall in loudness is heard — this is the phenomenon of <strong>beats</strong>, arising from interference of the two waves.</p>
+  <div class="formula-box">Beat frequency: f₁ − f₂ = 1/t = N &nbsp;(N = number of beats per second)</div>
+  <div class="example">
+    <span class="label">Worked example — identifying the unknown frequency</span>
+    A tuning fork of frequency 312 Hz is sounded with a fork of unknown frequency; 4 beats per second are heard. When plasticine (which lowers frequency) is added to the known fork, the beats <em>decrease</em>. Since decreasing beats after lowering the known fork's frequency means the two frequencies are converging, the unknown fork must originally be <em>higher</em>: f = 312 + 4 = <strong>316 Hz</strong>.
+    <br><br>
+    <strong>Rule of thumb:</strong> loading a fork with plasticine lowers its frequency slightly. If the beat rate then rises, the unknown note was below the loaded fork's original frequency; if the beat rate falls, the unknown note was above it.
+  </div>
+
+  <h3>The Doppler Effect</h3>
+  <p>Discovered by Christian J. Doppler in 1845: a change in frequency of a wave is observed whenever there is relative motion between the source of sound (or light) and the observer. This is why the pitch of an approaching ambulance siren drops suddenly as it passes you.</p>
+  <p>Let: <strong>c</strong> = speed of sound, <strong>u<sub>s</sub></strong> = speed of the source, <strong>u<sub>o</sub></strong> = speed of the observer, <strong>f</strong> = true (emitted) frequency, <strong>f′</strong> = apparent (heard) frequency.</p>
+
+  <div class="case-grid">
+    <div class="case-card">
+      <div class="ct">Case I — Source moving toward stationary observer</div>
+      f′ = cf / (c − u<sub>s</sub>) &nbsp; (f′ &gt; f, pitch rises)
+    </div>
+    <div class="case-card">
+      <div class="ct">Case II — Source moving away from stationary observer</div>
+      f′ = cf / (c + u<sub>s</sub>) &nbsp; (f′ &lt; f, pitch falls)
+    </div>
+    <div class="case-card">
+      <div class="ct">Case III — Source stationary, observer moving toward it</div>
+      f′ = (c + u<sub>o</sub>)f / c &nbsp; (f′ rises)
+    </div>
+    <div class="case-card">
+      <div class="ct">Case IV — Source stationary, observer moving away</div>
+      f′ = (c − u<sub>o</sub>)f / c &nbsp; (f′ falls)
+    </div>
+    <div class="case-card">
+      <div class="ct">Case V — Both moving same direction, different speeds</div>
+      f′ = (c − u<sub>o</sub>)f / (c − u<sub>s</sub>)
+    </div>
+    <div class="case-card">
+      <div class="ct">Case VI — General formula (both moving, toward/away)</div>
+      f′ = (c ± u<sub>o</sub>)f / (c ∓ u<sub>s</sub>)
+    </div>
+  </div>
+
+  <div class="note">
+    <span class="label">Sign convention (Case VI, general formula)</span>
+    If the object (observer) and source move <em>towards</em> each other, u<sub>o</sub> is positive; if moving apart, u<sub>o</sub> is negative — and likewise for u<sub>s</sub> in the denominator, applied consistently. When the source and observer move in the same direction with equal velocities (u<sub>o</sub> = u<sub>s</sub>), no Doppler effect occurs. Wind blowing in the direction of the observer effectively increases the wave speed to (c + u<sub>w</sub>); wind blowing away from the observer gives (c − u<sub>w</sub>). When a source moves at an angle α to the line joining source and observer, replace u<sub>s</sub> with u<sub>s</sub>cos α in the formula.
+  </div>
+
+  <div class="example">
+    <span class="label">Worked example — a moving vehicle passing a stationary siren</span>
+    A police siren has frequency 800 Hz; speed of sound in air = 344 m/s. Find the frequency heard by drivers of vehicles moving at 14 m/s (i) towards the siren, (ii) away from the siren.<br><br>
+    (i) f′ = (c+u<sub>o</sub>)f/c = (344+14)(800)/344 = <strong>832.56 Hz</strong><br>
+    (ii) f′ = (c−u<sub>o</sub>)f/c = (344−14)(800)/344 = <strong>767.44 Hz</strong>
+  </div>
+
+  <div class="example">
+    <span class="label">Worked example — change in pitch as a source passes an observer</span>
+    A car horn (500 Hz) approaches then passes a stationary observer at 20 m/s (c = 340 m/s).<br>
+    Approaching: f′ = cf/(c−u<sub>s</sub>) = 340(500)/(340−20) = 531.25 Hz<br>
+    Receding: f″ = cf/(c+u<sub>s</sub>) = 340(500)/(340+20) = 472.22 Hz<br>
+    Change in pitch = f″/f′ = 472.22/531.25 = <strong>0.9</strong> (i.e. the apparent frequency drops to 90% of its approaching value as the car passes).
+  </div>
+
+  <h3>Intensity and the Inverse Square Law</h3>
+  <div class="formula-box">
+    <span class="label">Intensity (power per unit area)</span>
+    I = Power / Area &nbsp;&nbsp;→&nbsp;&nbsp; for a spherical wavefront: I = Power / 4πr²
+  </div>
+  <p>Since intensity depends on power and varies inversely with the square of distance from the source: I ∝ 1/r², so for two points: I₁r₁² = I₂r₂².</p>
+  <div class="example">
+    <span class="label">Worked example</span>
+    A small loudspeaker radiates 25 W. At r = 5 m, I = 25/(4π×5²) = <strong>0.08 W/m²</strong>. At r = 10 m (twice as far): I₂ = I₁r₁²/r₂² = 0.08×25/100 = <strong>0.02 W/m²</strong>.
+  </div>
+
+  <h3>Sound Intensity Level — Decibels</h3>
+  <div class="formula-box">Number of decibels = 10 log₁₀(P₂/P₁) &nbsp;&nbsp;or&nbsp;&nbsp; dB = 10 log₁₀(I/I₀)</div>
+  <p>The reference intensity (threshold of hearing) is I₀ = 10⁻¹² W/m², corresponding to the minimum pressure change the human ear can detect, 20 µPa. The threshold of pain is about 1 W/m² (≈120 dB), corresponding to a pressure of 20 Pa. Normal conversation has an intensity of about 10⁻⁵ W/m² (≈70 dB).</p>
+  <div class="example">
+    <span class="label">Worked example</span>
+    A radio emits sound of intensity 10⁻⁸ W/m². Intensity level = 10 log₁₀(10⁻⁸/10⁻¹²) = 10 log₁₀(10⁴) = <strong>40 dB</strong>.
+  </div>
+
+  <h3>Reflection, Echoes and Reverberation</h3>
+  <ul>
+    <li>Sound waves reflect wherever they meet an obstruction or discontinuity in the propagation medium.</li>
+    <li><strong>Echo</strong> applications: measuring the velocity of sound (v = 2d/t), medical diagnosis (ultrasound), and prospecting for minerals like hydrocarbons.</li>
+    <li><strong>Reverberation</strong> is the persistence of sound in an enclosure after the source has stopped, due to (i) direct sound waves, (ii) echoes from walls/ceilings, and (iii) diffused sound within the enclosure.</li>
+  </ul>
+  <div class="formula-box">
+    <span class="label">Sabine's reverberation time formula</span>
+    t = KV / (αA)
+  </div>
+  <p>where V = volume of the enclosure, A = total surface area, α = average absorptive power of the surfaces, K = a constant.</p>
+
+  <h3>Resonance</h3>
+  <p>Resonance occurs when a vibrating system produces its largest amplitude because the frequency of an external driving force matches its fundamental frequency. Types: <strong>mechanical</strong> (e.g. a diver on a springboard), <strong>acoustic</strong> (resonance tube), and <strong>electromagnetic</strong> (radio/transistor receivers).</p>
+
+  <div class="keyfacts">
+    <span class="label">Key facts to remember</span>
+    <ul>
+      <li>Pitch depends only on frequency; loudness depends on intensity/amplitude; quality (timbre) depends on waveform and overtones.</li>
+      <li>Speed of sound in a gas is independent of pressure (at constant T) but proportional to √T.</li>
+      <li>Doppler frequency rises when source and observer approach, falls when they recede.</li>
+      <li>Intensity obeys the inverse square law: I ∝ 1/r².</li>
+      <li>0 dB corresponds to the threshold of hearing, I₀ = 10⁻¹² W/m².</li>
+    </ul>
+  </div>
+
+  <div class="panelnav">
+    <button onclick="goTo('t2')">← Prev: Waves &amp; Wave Motion</button>
+    <button onclick="goTo('t4')">Next: Sound Sources &amp; Detectors →</button>
+  </div>
+</section>
+
+<!-- TOPIC 4 -->
+<section class="panel" id="panel-t4">
+  <div class="topic-kicker">Topic 4</div>
+  <h2 class="topic-title">Sources of Sound and Sound Detectors</h2>
+
+  <h3>Sources of Sound</h3>
+  <p><strong>Musical instruments</strong> are classified by how they produce vibration:</p>
+  <ul>
+    <li><strong>String instruments</strong> (violin, guitar, piano) — sound is produced by vibrating stretched strings; pitch depends on the string's tension, length and mass per unit length (v = √(T/μ)).</li>
+    <li><strong>Wind instruments</strong> (flute, trumpet, organ pipes) — sound is produced by vibrating air columns inside a tube.</li>
+    <li><strong>Percussion instruments</strong> (drums) — sound is produced by vibrating membranes or surfaces.</li>
+  </ul>
+
+  <h4>The Human Speech Organs</h4>
+  <p>Speech is produced when air from the lungs is forced past the vocal cords in the larynx, causing them to vibrate. The pitch of the voice is controlled by the tension and length of the vocal cords, while the mouth, tongue, and nasal cavity shape the resonance to form distinct sounds.</p>
+
+  <h4>The Loudspeaker</h4>
+  <p>A loudspeaker converts electrical (audio) signals into sound. A coil carrying the varying audio current sits in a magnetic field; the resulting force makes the coil (and the attached paper cone) vibrate, producing sound waves that match the electrical signal.</p>
+
+  <h3>Sound Detectors</h3>
+  <h4>Microphones</h4>
+  <p>A microphone converts sound energy into electrical energy — the reverse process of a loudspeaker.</p>
+  <p><strong>Carbon granule microphone:</strong> sound waves striking a diaphragm compress a chamber of carbon granules, changing their electrical resistance in step with the sound pressure. This resistance variation modulates a current flowing through the granules, producing a varying electrical signal.</p>
+
+  <h4>The Human Ear</h4>
+  <p>The ear has three main parts:</p>
+  <ul>
+    <li><strong>Outer ear</strong> — the pinna collects sound and channels it via the ear canal to the eardrum (tympanic membrane), which vibrates.</li>
+    <li><strong>Middle ear</strong> — three small bones (ossicles: malleus, incus, stapes) amplify and transmit the vibration to the oval window of the inner ear.</li>
+    <li><strong>Inner ear</strong> — the cochlea converts mechanical vibrations into nerve impulses sent to the brain via the auditory nerve.</li>
+  </ul>
+
+  <h4>Auditory Response</h4>
+  <p>The normal human ear responds to frequencies roughly between 20 Hz and 20,000 Hz. Sound waves of frequency higher than 20,000 Hz cannot be heard by a human and are called <strong>ultrasonics</strong>. Frequencies below 20 Hz are called <strong>infrasonics</strong>. The ear's sensitivity varies with frequency — it is most sensitive around 2,000–5,000 Hz.</p>
+
+  <div class="keyfacts">
+    <span class="label">Key facts to remember</span>
+    <ul>
+      <li>Loudspeakers convert electrical energy to sound; microphones convert sound to electrical energy.</li>
+      <li>The three ossicles of the middle ear are the malleus, incus and stapes.</li>
+      <li>The audible range for humans is approximately 20 Hz – 20,000 Hz.</li>
+      <li>Sound above 20,000 Hz is ultrasonic; below 20 Hz is infrasonic.</li>
+    </ul>
+  </div>
+
+  <div class="panelnav">
+    <button onclick="goTo('t3')">← Prev: Nature of Sound</button>
+    <button onclick="goTo('t5')">Next: Reflection →</button>
+  </div>
+</section>
+
+<!-- TOPIC 5 -->
+<section class="panel" id="panel-t5">
+  <div class="topic-kicker">Topic 5</div>
+  <h2 class="topic-title">Reflection of Light at Plane and Curved Surfaces</h2>
+
+  <h3>Laws of Reflection</h3>
+  <ol>
+    <li>The incident ray, the reflected ray, and the normal at the point of incidence all lie in the same plane.</li>
+    <li>The angle of incidence equals the angle of reflection (i = r).</li>
+  </ol>
+
+  <h3>Plane Mirrors</h3>
+  <p>The image of a point object O in a plane mirror is located by extending the reflected rays backwards until they meet at the image point I. Since the rays only <em>appear</em> to come from I (they don't actually pass through it), this image is <strong>virtual</strong> — it cannot be captured on a screen.</p>
+  <ul>
+    <li>The image is the same size as the object, and is as far behind the mirror as the object is in front.</li>
+    <li>The image is <strong>laterally inverted</strong> ("perverted") — a left hand appears as a right hand in the mirror.</li>
+  </ul>
+
+  <div class="example">
+    <span class="label">Worked example</span>
+    A man stands 0.5 m in front of a plane mirror and walks directly away at 0.6 m/s. Find the distance between the man and his image after 5 s.<br>
+    Distance walked = 0.6×5 = 3 m. Distance from mirror = 3+0.5 = 3.5 m. Distance between man and image = 2×3.5 = <strong>7 m</strong>.
+  </div>
+
+  <h3>Rotating Mirrors</h3>
+  <p>When a mirror rotates through an angle θ, the reflected ray rotates through <strong>2θ</strong> — twice the angle of rotation of the mirror.</p>
+
+  <h3>Curved (Spherical) Mirrors</h3>
+  <div class="diagram">
+    <svg viewBox="0 0 560 190" xmlns="http://www.w3.org/2000/svg">
+      <line x1="20" y1="95" x2="540" y2="95" stroke="#94a3b8" stroke-width="1.5"/>
+      <path d="M 150 30 Q 100 95 150 160" fill="none" stroke="#1e293b" stroke-width="2.5"/>
+      <circle cx="60" cy="95" r="3" fill="#4f46e5"/><text x="52" y="115" font-size="13" font-family="Helvetica">C</text>
+      <circle cx="105" cy="95" r="3" fill="#0891b2"/><text x="98" y="115" font-size="13" font-family="Helvetica">F</text>
+      <circle cx="150" cy="95" r="3" fill="#1e293b"/><text x="153" y="115" font-size="13" font-family="Helvetica">P</text>
+      <text x="80" y="25" font-size="13" font-family="Helvetica" fill="#334155">Concave (converging)</text>
+      <path d="M 420 30 Q 470 95 420 160" fill="none" stroke="#1e293b" stroke-width="2.5"/>
+      <circle cx="470" cy="95" r="3" fill="#4f46e5"/><text x="475" y="115" font-size="13" font-family="Helvetica">C</text>
+      <circle cx="450" cy="95" r="3" fill="#0891b2"/><text x="453" y="80" font-size="13" font-family="Helvetica">F</text>
+      <circle cx="420" cy="95" r="3" fill="#1e293b"/><text x="405" y="115" font-size="13" font-family="Helvetica">P</text>
+      <text x="380" y="25" font-size="13" font-family="Helvetica" fill="#334155">Convex (diverging)</text>
+    </svg>
+    <div class="cap">C = centre of curvature, F = principal focus, P = pole. CP = R = 2f</div>
+  </div>
+
+  <h4>Rules for ray diagrams</h4>
+  <ul>
+    <li>A ray parallel to the principal axis is reflected through the principal focus.</li>
+    <li>A ray through the principal focus is reflected parallel to the principal axis.</li>
+    <li>A ray through the centre of curvature strikes the mirror normally and is reflected straight back along the same path.</li>
+  </ul>
+
+  <div class="formula-box">
+    <span class="label">Mirror equation</span>
+    1/u + 1/v = 1/f &nbsp;&nbsp;&nbsp; where f = R/2
+  </div>
+
+  <div class="note">
+    <span class="label">Sign convention</span>
+    (i) f is positive for converging (concave) mirrors, negative for diverging (convex) mirrors.<br>
+    (ii) u is positive for an object in front of the mirror.<br>
+    (iii) v is negative for virtual images, positive for real images.
+  </div>
+
+  <h4>Image characteristics — concave mirror</h4>
+  <table>
+    <tr><th>Object position</th><th>Image</th></tr>
+    <tr><td>Beyond centre of curvature C</td><td>Real, inverted, diminished</td></tr>
+    <tr><td>At C</td><td>Real, inverted, same size</td></tr>
+    <tr><td>Between C and F</td><td>Real, inverted, magnified</td></tr>
+    <tr><td>Between F and mirror (pole)</td><td>Virtual, erect, magnified (used as a shaving mirror)</td></tr>
+  </table>
+  <p>A <strong>convex mirror</strong> always produces images that are virtual, erect and diminished, regardless of object position — magnification is always less than unity. This is why convex mirrors are used as wide-view/rear-view mirrors.</p>
+
+  <div class="keyfacts">
+    <span class="label">Key facts to remember</span>
+    <ul>
+      <li>Angle of incidence = angle of reflection.</li>
+      <li>Plane mirror images are virtual, same size, laterally inverted.</li>
+      <li>Rotating a mirror by θ turns the reflected ray by 2θ.</li>
+      <li>1/u + 1/v = 1/f, with f = R/2.</li>
+      <li>Convex mirrors always give virtual, erect, diminished images.</li>
+    </ul>
+  </div>
+
+  <div class="panelnav">
+    <button onclick="goTo('t4')">← Prev: Sound Sources &amp; Detectors</button>
+    <button onclick="goTo('t6')">Next: Refraction →</button>
+  </div>
+</section>
+
+<!-- TOPIC 6 -->
+<section class="panel" id="panel-t6">
+  <div class="topic-kicker">Topic 6</div>
+  <h2 class="topic-title">Refraction at Plane and Curved Surfaces</h2>
+
+  <p>Refraction is the bending of light as it passes from one transparent medium into another, caused by a change in the speed of light (and hence wavelength) at constant frequency. If the second medium is optically denser, light bends <em>towards</em> the normal; if less dense, it bends <em>away</em> from the normal.</p>
+
+  <h3>Laws of Refraction (Snell's Law)</h3>
+  <ol>
+    <li>The incident ray, refracted ray, and normal at the point of incidence all lie in the same plane.</li>
+    <li>The ratio of the sine of the angle of incidence to the sine of the angle of refraction is constant for a given pair of media and a given wavelength.</li>
+  </ol>
+  <div class="formula-box">
+    <span class="label">Snell's law</span>
+    n = sin i / sin r
+  </div>
+
+  <h3>Refractive Index</h3>
+  <div class="formula-box">
+    <span class="label">Absolute refractive index</span>
+    n = c/v &nbsp; (ratio of the speed of light in vacuum, c, to its speed v in the medium)
+  </div>
+  <p>n &gt; 1 for every medium except vacuum, where n = 1.</p>
+
+  <h3>Optical Invariant</h3>
+  <p>For refraction through several parallel media (e.g. air → water → glass):</p>
+  <div class="formula-box">n sin θ = constant</div>
+  <div class="example">
+    <span class="label">Worked example</span>
+    Light passes from air (i₁=60°) into water (n=1.33), then into glass (n=1.6). Find r₂.<br>
+    1×sin60° = 1.33 sin r₁; then 1.33 sin r₁ = 1.6 sin r₂ → sin r₂ = sin60°/1.6 = 0.5413 → r₂ = <strong>32°46′</strong>.
+  </div>
+
+  <h3>Total Internal Reflection</h3>
+  <p>When light travels from a denser medium to a less dense one, the refracted ray bends away from the normal. As the angle of incidence increases, refraction angle increases until it reaches 90° at the <strong>critical angle, C</strong>. Beyond C, no refracted ray exists — all light is reflected back into the denser medium (total internal reflection).</p>
+  <div class="formula-box">sin C = 1/n</div>
+  <p>Applications: right-angled prisms and reflectors (periscopes, binoculars), optical fibres, and mirages.</p>
+
+  <h3>Thin Lenses</h3>
+  <h4>Ray rules for lenses</h4>
+  <ul>
+    <li>A ray parallel to the principal axis refracts through the far focal point.</li>
+    <li>A ray through the centre of the lens is undeviated.</li>
+    <li>A ray through the near focal point emerges parallel to the principal axis.</li>
+  </ul>
+
+  <div class="formula-box">
+    <span class="label">Thin lens equation</span>
+    1/u + 1/v = 1/f
+  </div>
+  <p>where u = object distance, v = image distance, f = focal length (positive for converging/convex lenses, negative for diverging/concave lenses).</p>
+
+  <div class="formula-box">
+    <span class="label">Combined focal length of two thin lenses in contact</span>
+    1/f = 1/f₁ + 1/f₂
+  </div>
+
+  <div class="formula-box">
+    <span class="label">Power of a lens</span>
+    P = 1/f &nbsp; (in dioptres, D, when f is in metres)
+  </div>
+
+  <div class="example">
+    <span class="label">Worked example — correcting long sight (hypermetropia)</span>
+    A defective eye has a near point 100 cm in front of the eye instead of the normal 25 cm. What lens is needed to see an object at 25 cm clearly?<br>
+    1/f = 1/u + 1/v = 1/0.25 + 1/(−1) = 4 − 1 = 3 → f = 0.33 m.<br>
+    Power P = 1/f = <strong>+3 dioptres</strong> (a converging lens).
+  </div>
+
+  <div class="keyfacts">
+    <span class="label">Key facts to remember</span>
+    <ul>
+      <li>Snell's law: n = sin i/sin r; absolute refractive index n = c/v.</li>
+      <li>Optical invariant n sinθ = constant applies across multiple media.</li>
+      <li>Total internal reflection needs: light going from denser→rarer medium AND angle of incidence &gt; critical angle C, where sinC = 1/n.</li>
+      <li>Lens equation 1/u + 1/v = 1/f is identical in form to the mirror equation.</li>
+      <li>Power of a lens (dioptres) = 1/f(metres); converging lenses correct long sight, diverging lenses correct short sight.</li>
+    </ul>
+  </div>
+
+  <div class="panelnav">
+    <button onclick="goTo('t5')">← Prev: Reflection</button>
+    <button onclick="goTo('t7')">Next: Optical Instruments →</button>
+  </div>
+</section>
+
+<!-- TOPIC 7 -->
+<section class="panel" id="panel-t7">
+  <div class="topic-kicker">Topic 7</div>
+  <h2 class="topic-title">Optical Instruments</h2>
+
+  <h3>The Human Eye</h3>
+  <p>The eye focuses light onto the retina using the cornea and the crystalline lens. Two common defects:</p>
+  <div class="case-grid">
+    <div class="case-card">
+      <div class="ct">Myopia (short sight)</div>
+      Far objects appear blurred — the image forms in front of the retina (eyeball too long / lens too strong). Corrected with a <strong>diverging (concave) lens</strong>.
+    </div>
+    <div class="case-card">
+      <div class="ct">Hypermetropia (long sight)</div>
+      Near objects appear blurred — image forms behind the retina (eyeball too short / lens too weak). Corrected with a <strong>converging (convex) lens</strong>.
+    </div>
+  </div>
+  <p>The near point (closest distance of distinct vision) shifts further away with age as the eye's power of accommodation decreases — from about 7 cm at age 10 to 200 cm or more by age 60.</p>
+
+  <h3>The Simple Microscope (Magnifying Glass)</h3>
+  <p>A single converging lens used with the object placed between the lens and its focal point, producing a magnified, virtual, erect image.</p>
+
+  <h3>The Compound Microscope</h3>
+  <p>Uses two converging lenses — an <strong>objective</strong> (short focal length, close to the object) that forms a real, magnified image, which is then further magnified by an <strong>eyepiece</strong> acting as a simple magnifier.</p>
+
+  <h3>The Refracting (Astronomical) Telescope</h3>
+  <p>Uses an objective lens of long focal length to form a real image of a distant object, viewed through an eyepiece of short focal length. The final image is magnified but inverted.</p>
+
+  <h3>The Camera</h3>
+  <p>A converging lens forms a real, inverted, diminished image of the object on a light-sensitive film or sensor.</p>
+
+  <h3>The Periscope</h3>
+  <p>Uses two mirrors (or right-angled prisms relying on total internal reflection) set at 45° to allow viewing over an obstruction.</p>
+
+  <h3>Prism Binoculars</h3>
+  <p>Use pairs of right-angled prisms (via total internal reflection) to fold the optical path, making the instrument more compact while erecting the final image.</p>
+
+  <h3>The Projector</h3>
+  <p>A condensing lens concentrates light onto a slide; an objective lens then projects a large, real, inverted image onto a screen.</p>
+  <div class="formula-box">Linear magnification, m = v/u = v/f − 1</div>
+  <p>Using an objective of small focal length compared with v gives high magnification.</p>
+
+  <div class="keyfacts">
+    <span class="label">Key facts to remember</span>
+    <ul>
+      <li>Myopia (short sight) → diverging lens; hypermetropia (long sight) → converging lens.</li>
+      <li>Compound microscopes and astronomical telescopes both use an objective + eyepiece pair of converging lenses.</li>
+      <li>Periscopes and prism binoculars rely on total internal reflection or mirrors at 45°.</li>
+      <li>Projector magnification m = v/f − 1; small objective focal length gives high magnification.</li>
+    </ul>
+  </div>
+
+  <div class="panelnav">
+    <button onclick="goTo('t6')">← Prev: Refraction</button>
+    <button onclick="goTo('t8')">Next: Prisms &amp; Dispersion →</button>
+  </div>
+</section>
+
+<!-- TOPIC 8 -->
+<section class="panel" id="panel-t8">
+  <div class="topic-kicker">Topic 8</div>
+  <h2 class="topic-title">Prisms and Dispersion</h2>
+
+  <p>A prism is a transparent object with two plane refracting surfaces inclined to each other at the <strong>refracting angle, A</strong>. Unlike a parallel-sided glass block (which does not deviate a ray), a prism bends the emergent ray towards its base.</p>
+
+  <h3>Deviation Through a Prism</h3>
+  <div class="formula-box">
+    D = (i + i′) − (r + r′) &nbsp;&nbsp;&nbsp; and &nbsp;&nbsp;&nbsp; A = r + r′
+  </div>
+  <p>where i is the angle of incidence, i′ the angle of emergence, and D is the angle of deviation.</p>
+
+  <h3>Minimum Deviation</h3>
+  <p>The deviation is smallest when the ray passes symmetrically through the prism (i = i′), giving the minimum deviation D<sub>min</sub>.</p>
+  <div class="formula-box">
+    <span class="label">Refractive index of the prism material</span>
+    n = sin[½(A + D<sub>min</sub>)] / sin(½A)
+  </div>
+  <p>This formula is used to determine the refractive index of a prism material experimentally, using optical pins or a spectrometer.</p>
+
+  <h3>Dispersion</h3>
+  <p>When white light passes through a prism, it splits into a band of colours — <strong>Red, Orange, Yellow, Green, Blue, Indigo, Violet (ROYGBIV)</strong> — called a spectrum. This is <strong>dispersion</strong>. Violet light is refracted (and deviated) the most, red the least, because the refractive index of glass is slightly greater for shorter wavelengths (violet) than for longer ones (red). Rainbows form by dispersion of sunlight in water droplets acting as tiny prisms.</p>
+
+  <h3>Chromatic Aberration</h3>
+  <p>Since a simple lens refracts different colours by different amounts (like a prism), it forms images of slightly different size and position for each colour, causing coloured fringes around images — this defect is called <strong>chromatic aberration</strong>. It can be reduced by combining a converging and a diverging lens of different materials (an achromatic doublet).</p>
+
+  <h3>Types of Spectra</h3>
+  <table>
+    <tr><th>Type</th><th>Description</th></tr>
+    <tr><td><strong>Line spectrum</strong></td><td>Discrete bright lines at specific wavelengths — produced by excited atoms of a gas (e.g. hydrogen's visible line spectrum).</td></tr>
+    <tr><td><strong>Band spectrum</strong></td><td>Groups of closely spaced lines that appear as bands — typically from molecules.</td></tr>
+    <tr><td><strong>Continuous spectrum</strong></td><td>All wavelengths present, with no gaps — produced by incandescent solids, liquids, or gases at high pressure.</td></tr>
+    <tr><td><strong>Absorption spectrum</strong></td><td>Dark lines across a continuous spectrum, where a cooler gas absorbs its characteristic wavelengths from light passing through it (e.g. the Sun's Fraunhofer lines, caused by hydrogen and helium in the solar atmosphere).</td></tr>
+  </table>
+  <p>By Kirchhoff's law, a substance that emits light of a certain wavelength at a given temperature can also absorb light of that same wavelength at that temperature.</p>
+
+  <div class="keyfacts">
+    <span class="label">Key facts to remember</span>
+    <ul>
+      <li>D = (i+i′) − (r+r′); at minimum deviation, i = i′.</li>
+      <li>n = sin[½(A+D<sub>min</sub>)]/sin(½A) — the standard method for finding a prism's refractive index.</li>
+      <li>Violet deviates most, red deviates least in dispersion (ROYGBIV).</li>
+      <li>Four spectrum types: line, band, continuous, and absorption (Fraunhofer lines are solar absorption lines).</li>
+    </ul>
+  </div>
+
+  <div class="panelnav">
+    <button onclick="goTo('t7')">← Prev: Optical Instruments</button>
+    <button onclick="goTo('t9')">Next: Wave Nature of Light →</button>
+  </div>
+</section>
+
+<!-- TOPIC 9 -->
+<section class="panel" id="panel-t9">
+  <div class="topic-kicker">Topic 9</div>
+  <h2 class="topic-title">Wave Nature of Light</h2>
+
+  <p>Interference and diffraction demonstrate that light behaves as a wave. <strong>Huygens' principle</strong> states that every point on a wavefront acts as a source of secondary spherical wavelets, and the new wavefront is the envelope of these wavelets — this is used to explain reflection and refraction of waves.</p>
+
+  <h3>Conditions for Interference</h3>
+  <p>Two sources produce a stable (observable) interference pattern only if they are <strong>coherent</strong> — same frequency, same wavelength, constant phase difference (and ideally similar amplitude).</p>
+  <div class="formula-box">
+    Constructive interference: path difference = 0, λ, 2λ, ... (phase difference δ = 0, 2π, 4π,...) → maximum intensity<br>
+    Destructive interference: path difference = λ/2, 3λ/2, ... (phase difference δ = π, 3π, 5π,...) → minimum/zero intensity
+  </div>
+
+  <h3>Young's Double-Slit Experiment</h3>
+  <p>Two narrow, closely-spaced slits S₁ and S₂ (separation d), illuminated by a coherent monochromatic source, act as two coherent sources. On a screen at distance D, bright and dark fringes appear.</p>
+  <div class="formula-box">
+    <span class="label">Position of bright fringes</span>
+    z = mλD/d &nbsp; (m = 0, 1, 2, ... — the order of interference)
+  </div>
+  <div class="example">
+    <span class="label">Worked example</span>
+    Find the angle of the 4th bright fringe for two slits 0.3 mm apart, illuminated with light of wavelength 700 nm.<br>
+    Using d sinθ = mλ: sinθ = mλ/d = 4(700×10⁻⁹)/(0.3×10⁻³) = 9.3×10⁻³ → θ ≈ <strong>0.534°</strong>.
+  </div>
+
+  <h3>Thin Film Interference and Newton's Rings</h3>
+  <p>Interference also occurs in thin parallel films (like a soap bubble or oil slick) and in the thin wedge-shaped air gap between a curved and a flat glass surface, producing a pattern of concentric bright and dark rings known as <strong>Newton's rings</strong> — used to test the curvature/flatness of lens surfaces.</p>
+
+  <h3>Diffraction</h3>
+  <p>Diffraction is the bending of waves around obstacles or through apertures, causing deviation from straight-line propagation and producing alternating bright/dark bands even in the geometrical shadow region. Two kinds:</p>
+  <ul>
+    <li><strong>Fresnel diffraction</strong> — involves spherical wavefronts (source or screen at finite distance).</li>
+    <li><strong>Fraunhofer diffraction</strong> — involves plane wavefronts (source and screen effectively at infinity); mathematically simpler to analyse.</li>
+  </ul>
+
+  <h3>Diffraction Grating</h3>
+  <p>A diffraction grating consists of a large number of equally-spaced parallel slits/lines (as many as 10⁴ lines per cm). Light passing through interferes to produce sharp maxima.</p>
+  <div class="formula-box">
+    <span class="label">Grating equation</span>
+    d sinθ = mλ &nbsp;&nbsp; where d = 1/N (N = number of lines per unit length), m = 0, 1, 2, ... (order of spectrum)
+  </div>
+  <p>m = 0 gives the central (undeviated) maximum; m = 1 gives the first-order spectrum, m = 2 the second order, etc. Fringe width is inversely proportional to N (the grating constant).</p>
+
+  <div class="keyfacts">
+    <span class="label">Key facts to remember</span>
+    <ul>
+      <li>Interference requires coherent sources — same frequency, constant phase relationship.</li>
+      <li>Young's double slit: bright fringes at z = mλD/d.</li>
+      <li>Diffraction grating: d sinθ = mλ, with d = 1/N.</li>
+      <li>Huygens' principle explains wave propagation via secondary wavelets on a wavefront.</li>
+    </ul>
+  </div>
+
+  <div class="panelnav">
+    <button onclick="goTo('t8')">← Prev: Prisms &amp; Dispersion</button>
+    <button onclick="goTo('t10')">Next: Polarization →</button>
+  </div>
+</section>
+
+<!-- TOPIC 10 -->
+<section class="panel" id="panel-t10">
+  <div class="topic-kicker">Topic 10</div>
+  <h2 class="topic-title">Polarization</h2>
+
+  <p>If the vibration of particles in a transverse wave remains parallel to a fixed line in space, the wave is said to be <strong>linearly (plane) polarized</strong>. For light, the electric field vector E defines the plane of polarization (not the magnetic field, since E is responsible for photographic/detection effects). Ordinary light (e.g. from a tungsten filament) is <strong>unpolarized</strong> — its E field vibrates in random, changing directions, all perpendicular to the direction of travel.</p>
+
+  <div class="note">
+    <span class="label">Important</span>
+    Interference and diffraction can occur with <em>any</em> kind of wave (transverse or longitudinal). Polarization, however, occurs <em>only</em> with transverse waves — so the existence of polarization is used as proof that light is a transverse wave.
+  </div>
+
+  <p>There are four main ways to produce polarized light from unpolarized light:</p>
+
+  <h3>1. Polarization by Absorption</h3>
+  <p>Certain naturally-occurring crystals (dichroic materials, e.g. Polaroid, invented by E. H. Land in 1938) absorb light differently depending on its plane of polarization. Long-chain hydrocarbon molecules in the material absorb strongly when the electric field is parallel to the chain axis, but transmit light polarized perpendicular to it — so unpolarized light emerges plane-polarized.</p>
+  <div class="formula-box">
+    <span class="label">Malus's law (intensity through successive polarizers)</span>
+    I = I₀ cos²θ
+  </div>
+  <div class="example">
+    <span class="label">Worked example</span>
+    Unpolarized light of intensity I₀ passes through two Polaroids at 22.5° and 67.5° to a reference axis.<br>
+    After the first: I₁ = I₀cos²22.5° = 0.92I₀. After the second: I₂ = I₁cos²67.5° = <strong>0.38I₁</strong>.
+  </div>
+
+  <h3>2. Polarization by Scattering</h3>
+  <p>Scattering is the absorption and re-radiation of light by particles (e.g. air molecules). Light scattered at 90° to the original beam direction is (partially) polarized. This scattering by air molecules — which scatter shorter (blue) wavelengths more strongly than longer (red) wavelengths — is also why the sky appears blue.</p>
+
+  <h3>3. Polarization by Reflection — Brewster's Law</h3>
+  <p>When unpolarized light reflects off a boundary between two transparent media (e.g. air/glass), the reflected light is partially polarized. At one particular angle of incidence — the <strong>polarizing angle (Brewster's angle), θ<sub>p</sub></strong> — the reflected and refracted rays are exactly perpendicular to each other, and the reflected ray is <strong>completely</strong> polarized.</p>
+  <div class="formula-box">
+    <span class="label">Brewster's law</span>
+    tan θ<sub>p</sub> = n₂/n₁
+  </div>
+  <div class="example">
+    <span class="label">Worked example</span>
+    Light reflected from an oily floor (n₂ = 1.45, in air n₁ = 1) is fully polarized. Find the angle of incidence.<br>
+    tanθ<sub>p</sub> = 1.45/1 = 1.45 → θ<sub>p</sub> = <strong>55°24′</strong>.
+  </div>
+  <p>Because reflected glare is partially/fully polarized, polarizing sunglasses (Polaroid lenses) are very effective at cutting out glare from wet roads, water, and other reflective surfaces.</p>
+
+  <h3>4. Polarization by Birefringence (Double Refraction)</h3>
+  <p>First observed by Bartholinus in 1669, birefringence occurs in calcite, liquid crystals, and other non-cubic crystals due to their anisotropic atomic structure — meaning the speed of light through the material depends on its direction of travel (unlike isotropic materials, where speed is the same in every direction).</p>
+  <p>A birefringent material splits an incident ray into two: the <strong>ordinary ray (O)</strong>, which obeys the normal laws of refraction, and the <strong>extraordinary ray (E)</strong>, which does not. These two rays are completely plane-polarized at right angles to each other and travel at different speeds through the crystal.</p>
+
+  <div class="keyfacts">
+    <span class="label">Key facts to remember</span>
+    <ul>
+      <li>Polarization is possible only for transverse waves — proof that light is transverse.</li>
+      <li>Four polarization mechanisms: absorption (Polaroid), scattering (blue sky), reflection (Brewster's angle), and birefringence (double refraction, e.g. calcite).</li>
+      <li>Brewster's law: tanθ<sub>p</sub> = n₂/n₁; at this angle, reflected and refracted rays are perpendicular.</li>
+      <li>Malus's law: I = I₀cos²θ for light through a polarizer at angle θ to the incoming polarization axis.</li>
+    </ul>
+  </div>
+
+  <div class="panelnav">
+    <button onclick="goTo('t9')">← Prev: Wave Nature of Light</button>
+    <button onclick="goTo('cbt')">Go to CBT Practice Test →</button>
+  </div>
+</section>
+
+<!-- CBT SECTION -->
+<section class="panel" id="panel-cbt">
+  <div class="topic-kicker">Assessment</div>
+  <h2 class="topic-title">CBT Practice Test</h2>
+
+  <div id="cbt-intro">
+    <h4>Computer-Based Test — PHY122</h4>
+    <p style="margin-top:0;">This practice test draws from all ten topics: Vibrations &amp; SHM, Waves, Sound, Sound Sources/Detectors, Reflection, Refraction, Optical Instruments, Prisms &amp; Dispersion, Wave Nature of Light, and Polarization. Choose how many questions you'd like, then click Start.</p>
+    <div class="cbt-setup" id="lengthChooser">
+      <div class="chip" data-len="10">10 Questions</div>
+      <div class="chip selected" data-len="20">20 Questions</div>
+      <div class="chip" data-len="35">35 Questions (Full Bank)</div>
+    </div>
+    <button id="startBtn">Start Test</button>
+  </div>
+
+  <div id="quizArea">
+    <div id="quizHeader">
+      <span id="qCounter">Question 1 of 20</span>
+      <span id="qScore">Score: 0</span>
+    </div>
+    <div id="progressBarOuter"><div id="progressBarInner"></div></div>
+    <div class="qcard" id="qcard">
+      <div class="qtag" id="qtag">Topic</div>
+      <div class="qtext" id="qtext">Question text</div>
+      <div id="optsWrap"></div>
+      <div class="explain" id="explain"><span class="label">Explanation:</span><span id="explainText"></span></div>
+      <div class="qfooter"><button id="nextBtn">Next Question →</button></div>
+    </div>
+  </div>
+
+  <div id="resultArea">
+    <div class="scoreBig" id="scoreBig">0 / 20</div>
+    <div class="scoreLabel" id="scoreLabel">You scored 0%</div>
+    <div id="resultBreakdown"></div>
+    <button id="retakeBtn">Retake Test</button>
+  </div>
+</section>
+
+</main>
+
+<script>
+/* ---------------- Navigation ---------------- */
+const navItems = document.querySelectorAll('.navitem');
+function goTo(id){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('panel-'+id).classList.add('active');
+  navItems.forEach(n=>n.classList.remove('active'));
+  document.querySelector('.navitem[data-target="'+id+'"]').classList.add('active');
+  document.getElementById('main').scrollTo(0,0);
+  window.scrollTo(0,0);
+}
+navItems.forEach(n=>n.addEventListener('click', ()=>goTo(n.dataset.target)));
+goTo('t1');
+
+/* ---------------- CBT Question Bank ---------------- */
+const bank = [
+  {topic:"Vibrations & SHM", q:"In simple harmonic motion, the acceleration of a particle is:", opts:["Constant at all times","Proportional to displacement and directed away from equilibrium","Proportional to displacement and directed towards equilibrium","Independent of displacement"], correct:2, explain:"SHM is defined by a = −ω²x: acceleration is proportional to displacement but directed towards the equilibrium (fixed) point — hence the negative sign."},
+  {topic:"Vibrations & SHM", q:"The period of a simple pendulum depends on:", opts:["The mass of the bob and length","The length of the pendulum and g only","The amplitude of swing only","The mass of the bob only"], correct:1, explain:"T = 2π√(l/g) — period depends only on the length l and gravitational acceleration g (for small-angle swings), not on the mass of the bob."},
+  {topic:"Vibrations & SHM", q:"In SHM, the velocity of a particle is maximum when:", opts:["Displacement is maximum (x = A)","Displacement is zero (at equilibrium)","Acceleration is maximum","The particle is momentarily at rest"], correct:1, explain:"v = ω√(A²−x²) is maximum when x = 0, i.e. at the equilibrium position."},
+  {topic:"Vibrations & SHM", q:"Resonance occurs when:", opts:["The driving frequency is much less than natural frequency","The amplitude of oscillation is zero","The driving frequency equals the natural frequency of the system","Damping is at its maximum"], correct:2, explain:"Resonance is the condition where the frequency of the external periodic (driving) force equals the natural frequency of the oscillating system, producing maximum amplitude."},
+  {topic:"Waves & Wave Motion", q:"Which of these is a longitudinal wave?", opts:["Light wave","Radio wave","Sound wave","Wave on a string"], correct:2, explain:"Sound waves consist of compressions and rarefactions with particle vibration parallel to the direction of travel — this makes them longitudinal."},
+  {topic:"Waves & Wave Motion", q:"The relationship between wave speed v, frequency f and wavelength λ is:", opts:["v = f/λ","v = fλ","v = λ/f","v = f + λ"], correct:1, explain:"The universal wave equation is v = fλ, applicable to all wave types."},
+  {topic:"Waves & Wave Motion", q:"Which wave property can ONLY be exhibited by transverse waves, not longitudinal waves?", opts:["Reflection","Diffraction","Polarization","Interference"], correct:2, explain:"Polarization involves restricting vibration to a single plane perpendicular to the direction of travel — this is only possible for transverse waves."},
+  {topic:"Waves & Wave Motion", q:"In the progressive wave equation y = A sin(ωt − kx), the term k represents:", opts:["The wave's amplitude","The angular frequency","The wave number, 2π/λ","The wave's period"], correct:2, explain:"k = 2π/λ is called the wave number or propagation constant."},
+  {topic:"Sound", q:"The pitch of a musical note depends primarily on its:", opts:["Amplitude","Frequency","Waveform (overtones)","Intensity"], correct:1, explain:"Pitch depends only on the frequency of vibration — higher frequency gives higher pitch."},
+  {topic:"Sound", q:"The speed of sound in a gas, at constant temperature, is:", opts:["Directly proportional to pressure","Inversely proportional to pressure","Independent of pressure","Proportional to the square of pressure"], correct:2, explain:"Since c = √(γRT/M), and γ, R, M are constants for a given gas, speed depends only on temperature — it is independent of pressure at constant T."},
+  {topic:"Sound", q:"A source of sound moves towards a stationary observer. The apparent frequency f′ is given by:", opts:["f′ = cf/(c+u_s)", "f′ = cf/(c−u_s)", "f′ = (c+u_s)f/c", "f′ = (c−u_s)f/c"], correct:1, explain:"For a source moving towards a stationary observer: f′ = cf/(c − u_s), which is greater than f (pitch rises)."},
+  {topic:"Sound", q:"Two tuning forks of frequency 256 Hz and 260 Hz sound together. The beat frequency heard is:", opts:["258 Hz","4 Hz","516 Hz","2 Hz"], correct:1, explain:"Beat frequency = f₁ − f₂ = 260 − 256 = 4 Hz."},
+  {topic:"Sound", q:"Sound intensity level in decibels is calculated using:", opts:["dB = I/I₀","dB = 10 log₁₀(I/I₀)","dB = log₁₀(I×I₀)","dB = I₀/I"], correct:1, explain:"Decibel level is dB = 10 log₁₀(I/I₀), where I₀ = 10⁻¹² W/m² is the threshold of hearing."},
+  {topic:"Sound", q:"Doubling the distance from a point source of sound changes the intensity by a factor of:", opts:["2","4 (increase)","1/4 (decrease)","1/2 (decrease)"], correct:2, explain:"Intensity follows the inverse square law, I ∝ 1/r². Doubling r reduces I to 1/4 of its original value."},
+  {topic:"Sound", q:"Reverberation time in Sabine's formula t = KV/(αA) is directly proportional to:", opts:["The volume of the enclosure, V","The surface area, A","The absorption coefficient, α","The frequency of sound"], correct:0, explain:"t = KV/(αA): reverberation time increases with the volume V of the room and decreases as the absorptive surface area (αA) increases."},
+  {topic:"Sound Sources & Detectors", q:"Which of the following converts sound energy into electrical energy?", opts:["Loudspeaker","Microphone","Amplifier","Transformer"], correct:1, explain:"A microphone converts sound (mechanical) energy into an electrical signal — the reverse of what a loudspeaker does."},
+  {topic:"Sound Sources & Detectors", q:"The normal audible range of frequencies for the human ear is approximately:", opts:["2 Hz – 2,000 Hz","20 Hz – 20,000 Hz","200 Hz – 200,000 Hz","2,000 Hz – 200,000 Hz"], correct:1, explain:"Humans typically hear from about 20 Hz to 20,000 Hz (20 kHz)."},
+  {topic:"Sound Sources & Detectors", q:"Sound waves with frequency above 20,000 Hz are called:", opts:["Infrasonic","Supersonic","Ultrasonic","Subsonic"], correct:2, explain:"Frequencies above the upper limit of human hearing (20,000 Hz) are called ultrasonic."},
+  {topic:"Reflection", q:"If a plane mirror is rotated through 15°, the reflected ray rotates through:", opts:["7.5°","15°","30°","45°"], correct:2, explain:"When a mirror rotates by an angle θ, the reflected ray rotates by 2θ. So 15° rotation gives a 30° rotation of the reflected ray."},
+  {topic:"Reflection", q:"An object is placed between the pole and principal focus of a concave mirror. The image formed is:", opts:["Real, inverted, diminished","Virtual, erect, magnified","Real, erect, same size","Virtual, inverted, diminished"], correct:1, explain:"When the object is between F and the mirror pole, a concave mirror produces a virtual, erect, magnified image — this is the principle of a shaving/makeup mirror."},
+  {topic:"Reflection", q:"A convex mirror always produces images that are:", opts:["Real, inverted, magnified","Virtual, erect, diminished","Real, erect, diminished","Virtual, inverted, magnified"], correct:1, explain:"Regardless of object position, convex mirrors always form virtual, erect, diminished images (magnification always less than 1)."},
+  {topic:"Reflection", q:"In the mirror equation 1/u + 1/v = 1/f, the sign convention states v is negative when:", opts:["The image is real","The mirror is concave","The image is virtual","The object is very far away"], correct:2, explain:"By convention, v is taken as negative for virtual images and positive for real images."},
+  {topic:"Refraction", q:"Snell's law states that the ratio sin i / sin r is:", opts:["Always equal to 1","Constant for a given pair of media and wavelength","Dependent only on the angle of incidence","Equal to the wavelength of light"], correct:1, explain:"Snell's law: the ratio of sines of the angles of incidence and refraction is a constant (the refractive index) for a given pair of media at a given wavelength."},
+  {topic:"Refraction", q:"The absolute refractive index of a medium is defined as:", opts:["n = v/c","n = c/v","n = c×v","n = 1/c"], correct:1, explain:"n = c/v, the ratio of the speed of light in vacuum to its speed in the medium."},
+  {topic:"Refraction", q:"Total internal reflection can occur when light travels:", opts:["From a less dense to a denser medium at any angle","From a denser to a less dense medium, at an angle greater than the critical angle","Through a vacuum","From a denser to less dense medium, at any angle of incidence"], correct:1, explain:"Total internal reflection requires light travelling from a denser to a less dense (rarer) medium, with the angle of incidence exceeding the critical angle C, where sinC = 1/n."},
+  {topic:"Refraction", q:"For a thin converging lens, if u = 2f, the image distance v equals:", opts:["f","2f","3f","f/2"], correct:1, explain:"Using 1/u+1/v=1/f with u=2f: 1/2f + 1/v = 1/f → 1/v = 1/f − 1/2f = 1/2f → v = 2f."},
+  {topic:"Optical Instruments", q:"Short sight (myopia) is corrected using a:", opts:["Converging (convex) lens","Diverging (concave) lens","Plane mirror","Concave mirror"], correct:1, explain:"In myopia the eye focuses images in front of the retina; a diverging (concave) lens spreads the rays out slightly before they enter the eye, pushing the focus back onto the retina."},
+  {topic:"Optical Instruments", q:"A compound microscope uses:", opts:["Only one converging lens","A converging objective and a converging eyepiece","A diverging objective and a converging eyepiece","Two diverging lenses"], correct:1, explain:"A compound microscope has a short-focal-length converging objective (forms a real magnified image) and a converging eyepiece (further magnifies it, acting as a simple magnifier)."},
+  {topic:"Optical Instruments", q:"Long sight (hypermetropia) occurs because:", opts:["The image forms behind the retina","The image forms in front of the retina","The eye cannot detect colour","The pupil is too large"], correct:0, explain:"In hypermetropia, the eyeball is too short (or lens too weak), so the image of a near object would form behind the retina — corrected with a converging lens."},
+  {topic:"Prisms & Dispersion", q:"At minimum deviation through a prism:", opts:["i = 2i′","i = i′","r = 2r′","i = A"], correct:1, explain:"Minimum deviation occurs when the ray passes symmetrically through the prism, i.e. angle of incidence equals angle of emergence (i = i′)."},
+  {topic:"Prisms & Dispersion", q:"In the dispersion of white light by a prism, which colour deviates the LEAST?", opts:["Violet","Red","Green","Blue"], correct:1, explain:"Red light has the longest wavelength and lowest refractive index in glass, so it is deviated the least. Violet deviates the most."},
+  {topic:"Prisms & Dispersion", q:"Dark lines observed in the Sun's continuous spectrum (Fraunhofer lines) are an example of:", opts:["A line emission spectrum","A band spectrum","An absorption spectrum","A continuous spectrum only"], correct:2, explain:"Fraunhofer lines occur because gases in the Sun's atmosphere absorb specific wavelengths from the continuous spectrum below — this is an absorption spectrum."},
+  {topic:"Wave Nature of Light", q:"For two light sources to produce a stable interference pattern, they must be:", opts:["Of different frequencies","Coherent (same frequency, constant phase difference)","Very far apart","Polarized"], correct:1, explain:"Interference requires coherent sources: same frequency and wavelength with a constant phase relationship."},
+  {topic:"Wave Nature of Light", q:"In Young's double-slit experiment, the position of bright fringes on the screen is given by:", opts:["z = mλD/d","z = mD/λd","z = mλd/D","z = λD/m"], correct:0, explain:"Bright fringes occur at z = mλD/d, where m is the order, D is slit-to-screen distance, and d is slit separation."},
+  {topic:"Wave Nature of Light", q:"The diffraction grating equation is:", opts:["d sinθ = mλ","d cosθ = mλ","nλ = d/θ","d = mλsinθ"], correct:0, explain:"The grating equation is d sinθ = mλ, where d is the grating spacing (=1/N) and m is the order of the spectrum."},
+  {topic:"Polarization", q:"Polarization of light is possible because light is a:", opts:["Longitudinal wave","Transverse wave","Standing wave","Sound-like wave"], correct:1, explain:"Only transverse waves can be polarized — this is one of the key pieces of evidence that light is a transverse wave."},
+  {topic:"Polarization", q:"Brewster's law relating the polarizing angle θp to refractive indices is:", opts:["sinθp = n₂/n₁","tanθp = n₂/n₁","cosθp = n₁/n₂","tanθp = n₁/n₂"], correct:1, explain:"Brewster's law: tanθp = n₂/n₁. At this angle of incidence, the reflected ray is completely polarized and perpendicular to the refracted ray."},
+  {topic:"Polarization", q:"The blue colour of the sky is explained by which polarization mechanism?", opts:["Polarization by reflection","Polarization by absorption","Polarization by scattering","Polarization by birefringence"], correct:2, explain:"Air molecules scatter shorter (blue) wavelengths of sunlight more strongly than longer wavelengths — this scattering process also polarizes the light and gives the sky its blue colour."},
+  {topic:"Polarization", q:"In a birefringent crystal like calcite, the ray that does NOT obey the normal laws of refraction is called the:", opts:["Ordinary ray","Extraordinary ray","Reflected ray","Diffracted ray"], correct:1, explain:"The extraordinary ray (E) does not obey Snell's law in the usual way, unlike the ordinary ray (O) which does."}
+];
+
+/* ---------------- CBT Logic ---------------- */
+let quizQuestions = [];
+let currentQ = 0;
+let score = 0;
+let answered = false;
+let topicStats = {};
+
+const lengthChips = document.querySelectorAll('#lengthChooser .chip');
+let chosenLen = 20;
+lengthChips.forEach(c=>{
+  c.addEventListener('click', ()=>{
+    lengthChips.forEach(x=>x.classList.remove('selected'));
+    c.classList.add('selected');
+    chosenLen = parseInt(c.dataset.len);
+  });
+});
+
+function shuffle(arr){
+  const a = arr.slice();
+  for(let i=a.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [a[i],a[j]]=[a[j],a[i]];
+  }
+  return a;
+}
+
+document.getElementById('startBtn').addEventListener('click', ()=>{
+  const n = Math.min(chosenLen, bank.length);
+  quizQuestions = shuffle(bank).slice(0,n);
+  currentQ = 0; score = 0; topicStats = {};
+  document.getElementById('cbt-intro').style.display='none';
+  document.getElementById('resultArea').style.display='none';
+  document.getElementById('quizArea').style.display='block';
+  renderQuestion();
+});
+
+function renderQuestion(){
+  answered = false;
+  const q = quizQuestions[currentQ];
+  document.getElementById('qCounter').textContent = `Question ${currentQ+1} of ${quizQuestions.length}`;
+  document.getElementById('qScore').textContent = `Score: ${score}`;
+  document.getElementById('progressBarInner').style.width = ((currentQ)/quizQuestions.length*100)+'%';
+  document.getElementById('qtag').textContent = q.topic;
+  document.getElementById('qtext').textContent = q.q;
+  const wrap = document.getElementById('optsWrap');
+  wrap.innerHTML = '';
+  const letters = ['A','B','C','D'];
+  q.opts.forEach((optText, idx)=>{
+    const div = document.createElement('div');
+    div.className = 'opt';
+    div.innerHTML = `<span class="letter">${letters[idx]}</span><span>${optText}</span>`;
+    div.addEventListener('click', ()=> selectOption(idx, div));
+    wrap.appendChild(div);
+  });
+  document.getElementById('explain').style.display='none';
+  document.getElementById('nextBtn').style.display='none';
+}
+
+function selectOption(idx, div){
+  if(answered) return;
+  answered = true;
+  const q = quizQuestions[currentQ];
+  const allOpts = document.querySelectorAll('#optsWrap .opt');
+  allOpts.forEach(o=>o.classList.add('disabled'));
+  if(!topicStats[q.topic]) topicStats[q.topic] = {correct:0,total:0};
+  topicStats[q.topic].total++;
+  if(idx === q.correct){
+    div.classList.add('correct');
+    score++;
+    topicStats[q.topic].correct++;
+  } else {
+    div.classList.add('incorrect');
+    allOpts[q.correct].classList.add('correct');
+  }
+  document.getElementById('explainText').textContent = q.explain;
+  document.getElementById('explain').style.display='block';
+  document.getElementById('qScore').textContent = `Score: ${score}`;
+  document.getElementById('nextBtn').style.display='inline-block';
+}
+
+document.getElementById('nextBtn').addEventListener('click', ()=>{
+  currentQ++;
+  if(currentQ >= quizQuestions.length){
+    showResults();
+  } else {
+    renderQuestion();
+  }
+});
+
+function showResults(){
+  document.getElementById('quizArea').style.display='none';
+  document.getElementById('resultArea').style.display='block';
+  const pct = Math.round((score/quizQuestions.length)*100);
+  document.getElementById('scoreBig').textContent = `${score} / ${quizQuestions.length}`;
+  let label = `You scored ${pct}%`;
+  if(pct>=80) label += " — Excellent work!";
+  else if(pct>=60) label += " — Good, keep revising.";
+  else label += " — Review the topics below and try again.";
+  document.getElementById('scoreLabel').textContent = label;
+
+  const bd = document.getElementById('resultBreakdown');
+  bd.innerHTML = '<h4 style="margin-top:0;">Performance by topic</h4>';
+  Object.keys(topicStats).forEach(topic=>{
+    const s = topicStats[topic];
+    const p = Math.round((s.correct/s.total)*100);
+    const row = document.createElement('div');
+    row.className = 'breakdown-row';
+    row.innerHTML = `<span style="min-width:170px;">${topic}</span>
+      <div class="breakdown-bar-outer"><div class="breakdown-bar-inner" style="width:${p}%"></div></div>
+      <span style="min-width:50px; text-align:right;">${s.correct}/${s.total}</span>`;
+    bd.appendChild(row);
+  });
+  document.getElementById('progressBarInner').style.width = '100%';
+}
+
+document.getElementById('retakeBtn').addEventListener('click', ()=>{
+  document.getElementById('resultArea').style.display='none';
+  document.getElementById('cbt-intro').style.display='block';
+});
+</script>
+</body>
+</html>
