@@ -1,5 +1,7 @@
-# Studies Hub Bot
+# Studies Hub
 
-Bot for [studieshub.org](https://studieshub.org).
+Source for [studieshub.org](https://studieshub.org).
 
-Status: repository cleared and ready. Nothing built yet; awaiting bot specifications.
+Content is created by Claude from instructions given in chat and pushed directly to this repository.
+
+Status: repository cleared and ready. Nothing built yet.
