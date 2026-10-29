@@ -1,3 +1,15 @@
-node_modules
-data
+# Secrets and environment
 .env
+.env.*
+!.env.example
+
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+venv/
+.venv/
+
+# Logs and system files
+*.log
+.DS_Store
